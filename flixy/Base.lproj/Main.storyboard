@@ -111,7 +111,7 @@
         <!--Movie Details View Controller-->
         <scene sceneID="8WI-6c-nns">
             <objects>
-                <viewController id="UI0-TU-msW" customClass="MovieDetailsViewController" customModule="flixy" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MovieDetailsViewController" id="UI0-TU-msW" customClass="MovieDetailsViewController" customModule="flixy" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="0u5-RN-KZB">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -124,10 +124,14 @@
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="3fW-Qs-OIM">
                                 <rect key="frame" x="10" y="233" width="120" height="160"/>
+                                <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="160" id="m7Q-3H-cjT"/>
                                     <constraint firstAttribute="width" constant="120" id="wKO-3D-1Ky"/>
                                 </constraints>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="IbY-Xf-bP8" appends="YES" id="T0a-Kt-409"/>
+                                </connections>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QEk-iH-OAl">
                                 <rect key="frame" x="138" y="331" width="266" height="26.5"/>
@@ -167,8 +171,29 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uZv-Mf-8g6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="IbY-Xf-bP8">
+                    <connections>
+                        <action selector="posterTap:" destination="UI0-TU-msW" id="xMx-aP-0dk"/>
+                        <segue destination="Jhm-dc-LO4" kind="presentation" identifier="trailerSegue" id="loa-YJ-R3e"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="-820" y="1072"/>
+        </scene>
+        <!--Movie Trailer View Controller-->
+        <scene sceneID="dMl-bE-6bT">
+            <objects>
+                <viewController storyboardIdentifier="MovieTrailerViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Jhm-dc-LO4" customClass="MovieTrailerViewController" customModule="flixy" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="3qS-ZY-Mmr">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="dlI-rq-nlb"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Mhm-RV-Tjy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="33" y="1071"/>
         </scene>
         <!--Now Playing-->
         <scene sceneID="wDW-IJ-H5K">
