@@ -10,7 +10,6 @@ import WebKit
 
 class MovieTrailerViewController: UIViewController, WKUIDelegate {
     
-
     var movieId: Int!
     var result = [[String:Any]]()
     var webView: WKWebView!
@@ -27,7 +26,7 @@ class MovieTrailerViewController: UIViewController, WKUIDelegate {
 //        print(movieId!)
         let movieIdStr = String(movieId)
         let url_str = "https://api.themoviedb.org/3/movie/" + movieIdStr + "/videos?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed&language=en-US"
-        print(url_str)
+//        print(url_str)
         let url = URL(string: url_str)!
         let request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalCacheData, timeoutInterval: 10)
         let session = URLSession(configuration: .default, delegate: nil, delegateQueue: OperationQueue.main)
@@ -36,15 +35,12 @@ class MovieTrailerViewController: UIViewController, WKUIDelegate {
             if let error = error {
                 print(error.localizedDescription)
             } else if let data = data {
-                // Get array of movies
+                // Get movie trailer info
                 let dataDictionary = try! JSONSerialization.jsonObject(with: data, options: []) as! [String: Any]
 
                 self.result = dataDictionary["results"] as! [[String:Any]]
-                // Reload table view data
-
 //                print(dataDictionary)
-//                print(self.result[0]["key"]!)
-                
+             
                 let key = self.result[0]["key"] as! String
                 let myURL = URL(string:"https://www.youtube.com/watch?v=" + key)
                 let myRequest = URLRequest(url: myURL!)
@@ -54,10 +50,6 @@ class MovieTrailerViewController: UIViewController, WKUIDelegate {
         }
         task.resume()
 
-
-
-
-        // Do any additional setup after loading the view.
     }
     
 

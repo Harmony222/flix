@@ -14,9 +14,7 @@ class MovieDetailsViewController: UIViewController {
     @IBOutlet weak var posterView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var synopsisLabel: UILabel!
-    
-
-    
+        
     var movie: [String:Any]!
     
     override func viewDidLoad() {
@@ -34,7 +32,6 @@ class MovieDetailsViewController: UIViewController {
         let posterPath = movie["poster_path"] as! String
         let posterUrl = URL(string: baseUrl + posterPath)
 
-        
         posterView.af.setImage(withURL: posterUrl!)
         
         let backdropPath = movie["backdrop_path"] as! String
@@ -51,14 +48,11 @@ class MovieDetailsViewController: UIViewController {
     
     @IBAction func posterTap(_ sender: UITapGestureRecognizer) {
         print("tapped")
-//        let location = sender.location(in: view)
-//        let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
-//        let secondViewController = mainStoryboard.instantiateViewController(withIdentifier: "secondViewController") as! MovieTrailerViewController
-//        self.present(secondViewController, animated:true, completion:nil)
-        let mainStoryboard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        let VC = mainStoryboard.instantiateViewController(withIdentifier: "MovieTrailerViewController") as! MovieTrailerViewController
+//        let mainStoryboard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+//        let VC = mainStoryboard.instantiateViewController(withIdentifier: "MovieTrailerViewController") as! MovieTrailerViewController
+//        self.present(VC, animated: true, completion: nil)
         performSegue(withIdentifier: "trailerSegue", sender: nil)
-//        present(VC, animated: true, completion: nil)
+
    
         
     }
@@ -73,13 +67,9 @@ class MovieDetailsViewController: UIViewController {
         print("loading up")
         let trailerViewController = segue.destination as! MovieTrailerViewController
         let movieId = self.movie["id"]
-//        let movieIdStr = toString(movieId)
-//        print(movieId!)
-        trailerViewController.movieId = movieId as! Int
-
-//        trailerViewController.movie = self.movie
-        
+        trailerViewController.movieId = movieId as? Int
      
+   
     }
     
 
